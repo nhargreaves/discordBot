@@ -1,8 +1,6 @@
-const { GatewayIntentBits } = require('discord.js')
+const token = "MTEyNzMxNzYyODY4ODU0Mzg3Ng.GQulcM._0toY2wenjo0FLc4hKedKH9nHAlfjUivrOGHBM"
 
-//In bot.js
-const token = "MTEyNzMxNzYyODY4ODU0Mzg3Ng.GQulcM._0toY2wenjo0FLc4hKedKH9nHAlfjUivrOGHBM" //Token that you saved in step 5 of this tutorial
-const {Client, Intents} = require("discord.js")
+const {Client, GatewayIntentBits} = require("discord.js")
 const client = new Client({
     intents:[
       GatewayIntentBits.Guilds,
@@ -16,7 +14,7 @@ const randomIntMinToMax = (min, max) => { // min and max included
 }
 
 const randomiseFalcor = () => {
-  const number = randomIntMinToMax(1, 6)
+  const number = randomIntMinToMax(1, 10)
   switch (number) {
     case 1:
       return 'FALCOR 🤮'
