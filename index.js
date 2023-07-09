@@ -26,10 +26,6 @@ const randomiseFalcor = () => {
       return 'lollll you love falcor don\'t you'
     case 4:
       return '😲'
-    case 5:
-      return 'noMessage'
-    case 6:
-      return 'noMessage'
     default:
       return 'noMessage'
   }
@@ -39,33 +35,25 @@ const randomiseSilverheart = () => {
   const number = randomIntMinToMax(1, 6)
   switch (number) {
     case 1:
-      return 'Silverheart 🤓'
+      return 'silverheart 🤓'
     case 2:
       return 'shall we consult The System'
     case 3:
       return 'it is that way, yes'
-    case 4:
-      return 'noMessage'
-    case 5:
-      return 'noMessage'
-    case 6:
-      return 'noMessage'
     default:
       return 'noMessage'
   }
 }
 
 const randomisePanda = () => {
-  const number = randomIntMinToMax(1, 4)
+  const number = randomIntMinToMax(1, 6)
   switch (number) {
     case 1:
       return 'pandaaaaaaaa'
     case 2:
       return 'panda hi!!!!!!!!!!!!!!'
     case 3:
-      return 'noMessage'
-    case 4:
-      return 'noMessage'
+      return 'panda panda panda'
     default:
       return 'noMessage'
   }
@@ -80,8 +68,6 @@ const randomiseTicket = () => {
       return 'lol are you a moderator 🤓'
     case 2:
       return 'whoaaa important my little pony site user coming through 🤓🤓'
-    case 3:
-      return 'noMessage'
     default:
       return 'noMessage'
   }
@@ -90,58 +76,24 @@ const randomiseTicket = () => {
 const randomiseCat = () => {
   const number = randomIntMinToMax(1, 11)
   switch (number) {
-    case 1:
-      return 'but no love for stinky ok :('
+    // case 1:
+    //   return 'but no love for stinky ok :('
     case 2:
       return 'whatever i don\'t even care'
     case 3:
       return 'K'
-    case 4:
-      return 'noMessage'
-    case 5:
-      return 'noMessage'
-    case 6:
-      return 'noMessage'
-    case 7:
-      return 'noMessage'
-    case 8:
-      return 'noMessage'
-    case 9:
-      return 'noMessage'
-    case 10:
-      return 'noMessage'
-    case 11:
-      return 'noMessage'
     default:
       return 'noMessage'
   }
 }
 
 const randomiseZico = () => {
-  const number = randomIntMinToMax(1, 11)
+  const number = randomIntMinToMax(1, 9)
   switch (number) {
-    case 1:
-      return 'more like pido amirite LOL\nbecause pedo get it\nLOL'
     case 2:
       return '🖕'
-    case 3:
-      return 'just kidding zico is a great guy\n🖕'
-    case 4:
-      return 'noMessage'
     case 5:
       return '8==================D'
-    case 6:
-      return 'fuck zico lmao'
-    case 7:
-      return 'piiiiiiido'
-    case 8:
-      return 'noMessage'
-    case 9:
-      return 'noMessage'
-    case 10:
-      return 'noMessage'
-    case 11:
-      return 'noMessage'
     default:
       ('noMessage')
   }
@@ -154,13 +106,11 @@ const keywordFetch = (keyWord) => {
     case ('silverheart'):
       return randomiseSilverheart()
     case ('panda'):
-      console.log('panda')
       return randomisePanda()
     case ('ticket'):
-      console.log('basic ticket')
       return randomiseTicket()
-    // case ('cat'):
-    //   return randomiseCat()
+    case ('cat'):
+      return randomiseCat()
     case ('zico'):
       return randomiseZico()
     default:
@@ -195,10 +145,13 @@ client.on("messageCreate", (msg) => {
     if (pandaMsg !== 'noMessage') {
       msg.reply(pandaMsg)
     }
-  // } else if (message.includes('cat')) {
-  //   msg.reply('WHATEVERRRR PEDO')
-  } else if (message === 'poketwo') {
-    msg.reply('u want him so bad lol')
+  } else if (message.includes('cat')) {
+    const catMsg = keywordFetch('cat')
+    if (catMsg !== 'noMessage') {
+      msg.reply(catMsg)
+    }
+  } else if (message === 'poketwoo') {
+    msg.reply('stinkycaaaat')
   } else if (message.includes('zico')) {
     const zicoMsg = keywordFetch('zico')
     if (zicoMsg !== 'noMessage') {
