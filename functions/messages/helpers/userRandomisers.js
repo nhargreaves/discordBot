@@ -1,104 +1,170 @@
 import { randomIntMinToMax } from '../../../utils.js'
 
-export const keywordFetch = (keyWord) => {
+export const keywordFetch = (msg, keyWord) => {
   switch (keyWord) {
     case 'falcor':
-      return randomiseFalcor()
+      return randomiseFalcor(msg)
     case ('silverheart'):
-      return randomiseSilverheart()
+      return randomiseSilverheart(msg)
     case ('panda'):
-      return randomisePanda()
+      return randomisePanda(msg)
     case ('ticket'):
-      return randomiseTicket()
+      return randomiseTicket(msg)
     case ('cat'):
-      return randomiseCat()
+      return randomiseCat(msg)
     case ('zico'):
-      return randomiseZico()
+      return randomiseZico(msg)
+    case ('stinky'):
+      return randomiseStinky(msg)
+    case ('pokemon'):
+      return randomisePokemon(msg)
+    case ('baby'):
+      return randomiseBaby(msg)
+    case ('angryStinky'):
+      return randomiseAngryStinky(msg)
+    case ('any'):
+      return randomiseAny(msg)
     default:
-      console
-      return 'zico is a stupid moron coder so this shit bot just broke go make fun of her'
+      return msg.reply('zico is a stupid moron coder so this shit bot just broke go make fun of her')
   }
 }
 
-const randomiseFalcor = () => {
-  const number = randomIntMinToMax(1, 10)
+const randomiseBaby = (msg) => {
+  const number = randomIntMinToMax(1, 5)
   switch (number) {
     case 1:
-      return 'FALCOR 🤮'
+      return msg.reply('I\'M the baby')
+    default:
+      return 'noMessage'
+  }
+}
+
+const randomiseAngryStinky = (msg) => {
+  const number = randomIntMinToMax(1, 5)
+  switch (number) {
+    case 1:
+      return msg.react('🖕')
     case 2:
-      return '🤓 falcor 🤓'
+      return msg.react('🔫')
+    default:
+      return 'noMessage'
+  }
+}
+
+const randomiseFalcor = (msg) => {
+  const number = randomIntMinToMax(1, 5)
+  switch (number) {
+    case 1:
+      return msg.reply('FALCOR 🤮')
+    case 2:
+      return msg.reply('🤓 falcor 🤓')
     case 3:
-      return 'lollll you love falcor don\'t you'
+      return msg.reply('lollll you love falcor don\'t you')
     case 4:
-      return '😲'
+      return msg.reply('😲')
+    case 5:
+      return msg.react('😄')
     default:
       return 'noMessage'
   }
 }
 
-const randomiseSilverheart = () => {
+const randomiseSilverheart = (msg) => {
   const number = randomIntMinToMax(1, 10)
   switch (number) {
     case 1:
-      return 'silverheart 🤓'
+      return msg.reply('silverheart 🤓')
     case 2:
-      return 'shall we consult The System'
+      return msg.reply('shall we consult The System')
     case 3:
-      return 'it is that way, yes'
+      return msg.reply('it is that way, yes')
     default:
       return 'noMessage'
   }
 }
 
-const randomisePanda = () => {
+const randomisePanda = (msg) => {
   const number = randomIntMinToMax(1, 3)
   switch (number) {
     case 1:
-      return 'pandaaaaaaaa'
+      return msg.reply('pandaaaaaaaa')
     case 2:
-      return 'panda hi!!!!!!!!!!!!!!'
+      return msg.reply('panda hi!!!!!!!!!!!!!!')
     case 3:
-      return 'panda panda panda'
+      return msg.reply('panda panda panda')
     default:
       return 'noMessage'
   }
 }
 
-const randomiseTicket = () => {
-  console.log('hello ticket')
+const randomiseTicket = (msg) => {
   const number = randomIntMinToMax(1, 3)
-  console.log('ticket ofun')
   switch (number) {
     case 1:
-      return 'lol are you a moderator 🤓'
+      return msg.reply('lol are you a moderator 🤓')
     case 2:
-      return 'whoaaa important my little pony site user coming through 🤓🤓'
+      return msg.reply('whoaaa important my little pony site user coming through 🤓🤓')
     default:
       return 'noMessage'
   }
 }
 
-const randomiseCat = () => {
-  const number = randomIntMinToMax(1, 11)
+const randomiseCat = (msg) => {
+  const number = randomIntMinToMax(1, 3)
   switch (number) {
-    // case 1:
-    //   return 'but no love for stinky ok :('
     case 2:
-      return 'whatever i don\'t even care'
+      return msg.react('🖕')
     case 3:
-      return 'K'
+      return msg.react('🇰')
     default:
       return 'noMessage'
   }
 }
 
-const randomiseZico = () => {
+const randomiseZico = (msg) => {
   const number = randomIntMinToMax(1, 9)
   switch (number) {
     case 2:
-      return '🖕'
+      return msg.reply('🖕')
     case 5:
-      return '8==================D'
+      return msg.reply('8==================D')
+    default:
+      ('noMessage')
+  }
+}
+
+const randomiseStinky = (msg) => {
+  const number = randomIntMinToMax(1, 2)
+  switch (number) {
+    case 1:
+      return msg.react('👀')
+    case 2:
+      return msg.react('🥸')
+    case 2:
+      return msg.react('🥰')
+    default:
+      ('noMessage')
+  }
+}
+
+const randomisePokemon = (msg) => {
+  const number = randomIntMinToMax(1, 2)
+  console.log('hello')
+  switch (number) {
+    case 1:
+      return msg.reply('i think you should call it joe')
+    case 2:
+      return msg.react('looks like a hunter to me LOL')
+    default:
+      ('noMessage')
+  }
+}
+
+const randomiseAny = (msg) => {
+  const number = randomIntMinToMax(1, 50)
+  switch (number) {
+    case 1:
+      return msg.reply('stfu 🖕')
     default:
       ('noMessage')
   }

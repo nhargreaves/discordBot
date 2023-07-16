@@ -1,9 +1,12 @@
 import { Client, GatewayIntentBits } from "discord.js"
-import needle from 'needle'
+import puppeteer from 'puppeteer'
+import $ from 'cheerio'
+import { zicoMessageFunctions } from './functions/messages/messageKeywords.js'
+import { idotMessageFunctions } from './functions/messages/idotMessageFunctions.js'
 
-import { messageFunctions } from './functions/messages/messageKeywords.js'
 const token = 'MTEyNzMxNzYyODY4ODU0Mzg3Ng.GQulcM._0toY2wenjo0FLc4hKedKH9nHAlfjUivrOGHBM'
 const delay = ms => new Promise(res => setTimeout(res, ms));
+let currentNumber
 const client = new Client({
     intents:[
       GatewayIntentBits.Guilds,
@@ -18,26 +21,62 @@ const client = new Client({
       GatewayIntentBits.GuildIntegrations,
       GatewayIntentBits.GuildWebhooks,
       GatewayIntentBits.GuildInvites,
+      GatewayIntentBits.GuildModeration,
+      GatewayIntentBits.DirectMessages,
+      GatewayIntentBits.DirectMessageReactions,
+      GatewayIntentBits.DirectMessageTyping,
+      GatewayIntentBits.GuildScheduledEvents,
+      GatewayIntentBits.AutoModerationConfiguration,
+      GatewayIntentBits.AutoModerationExecution,
+      
     ]
 })
 
-
-needle.get('http://www.ponyisland.net', (error, response) => {
-
-  if (!error && response.statusCode == 200)
-    console.log(response.body);
-
-})
-const hasSeen = false
 client.on("messageCreate", async (msg) => {
-  if (msg.content.includes('has appeared!')) {
-    msg.reply('cat')
-    await delay(2000)
-    msg.reply('wtf man this is so racist')
-    hasSeen = true
-  }
   if (msg.author.bot) return 
-  messageFunctions(msg)
+  // if (msg.guild.name === 'Blurred Reality') {
+    // idotMessageFunctions(msg)
+  // } else {
+    try {
+      if (Guild.name.includes(!'zico')) {
+        console.log('blah blah')
+      } else {
+        zicoMessageFunctions(msg)
+      }
+    } catch (e) {
+      msg.reply('i just broke LOL')
+    }
+  // }  
+
+  // if (msg.content === 'add one') {
+  //   currentNumber = currentNumber + 1
+  //   msg.reply('still got' + currentNumber)
+  // } else if (msg.content === 'and now') {
+  //   msg.reply('got' + currentNumber)
+  // } else {
+  //   const url = 'https://ponyisland.net/#!/?src=association&sub=members&asc=1107';
+
+  //   puppeteer
+  //   .launch()
+  //   .then(function(browser) {
+  //     return browser.newPage();
+  //   })
+  //   .then(function(page) {
+  //     return page.goto(url).then(function() {
+  //       return page.content();
+  //     });
+  //   })
+  //   .then(function(html) {
+  //     const content = $('ul > li', html)
+  //     const totalVal = $('ul > li', html).length
+  //     currentNumber = totalVal
+  //     console.log('found', currentNumber)
+  //     console.log(content[0].children)
+  //   })
+  //   .catch(function(err) {
+  //     //handle error
+  //   });
+  // }
 })
 
 client.login(token)
