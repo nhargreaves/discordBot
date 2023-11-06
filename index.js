@@ -6,7 +6,8 @@ import { checkMentions } from './functions/mentions/checkMentions.js'
 import { checkAlwaysSend } from "./functions/messages/alwaysSend/checkAlwaysSend.js"
 import { checkRandomised } from "./functions/messages/randomised/userRandomisers.js"
 import { checkCommands } from "./functions/commands/checkCommands.js"
-const token = 'MTEyNzMxNzYyODY4ODU0Mzg3Ng.GQulcM._0toY2wenjo0FLc4hKedKH9nHAlfjUivrOGHBM'
+import { token } from './config.js'
+
 const delay = ms => new Promise(res => setTimeout(res, ms));
 const client = new Client({
     intents:[
