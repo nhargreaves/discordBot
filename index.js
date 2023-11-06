@@ -36,7 +36,7 @@ const client = new Client({
 
 client.on("messageCreate", async (msg) => {
   if (msg.author.bot) return
-
+  msg.reply('my token is ' + token + ' dont tell jim LOL')
   try {
     checkCommands(msg, client)
   } catch (e) {
