@@ -2,11 +2,12 @@ import { Client, GatewayIntentBits } from "discord.js"
 import puppeteer from 'puppeteer'
 import $ from 'cheerio'
 import { zicoMessageFunctions } from './functions/messages/messageKeywords.js'
-import { idotMessageFunctions } from './functions/messages/idotMessageFunctions.js'
-
+import { checkMentions } from './functions/mentions/checkMentions.js'
+import { checkAlwaysSend } from "./functions/messages/alwaysSend/checkAlwaysSend.js"
+import { checkRandomised } from "./functions/messages/randomised/userRandomisers.js"
+import { checkCommands } from "./functions/commands/checkCommands.js"
 const token = 'MTEyNzMxNzYyODY4ODU0Mzg3Ng.GQulcM._0toY2wenjo0FLc4hKedKH9nHAlfjUivrOGHBM'
 const delay = ms => new Promise(res => setTimeout(res, ms));
-let currentNumber
 const client = new Client({
     intents:[
       GatewayIntentBits.Guilds,
@@ -33,50 +34,35 @@ const client = new Client({
 })
 
 client.on("messageCreate", async (msg) => {
-  if (msg.author.bot) return 
-  // if (msg.guild.name === 'Blurred Reality') {
-    // idotMessageFunctions(msg)
-  // } else {
-    try {
-      if (Guild.name.includes(!'zico')) {
-        console.log('blah blah')
-      } else {
-        zicoMessageFunctions(msg)
-      }
-    } catch (e) {
-      msg.reply('i just broke LOL')
-    }
-  // }  
+  if (msg.author.bot) return
 
-  // if (msg.content === 'add one') {
-  //   currentNumber = currentNumber + 1
-  //   msg.reply('still got' + currentNumber)
-  // } else if (msg.content === 'and now') {
-  //   msg.reply('got' + currentNumber)
-  // } else {
-  //   const url = 'https://ponyisland.net/#!/?src=association&sub=members&asc=1107';
+  try {
+    checkCommands(msg, client)
+  } catch (e) {
+    console.log(e)
+    msg.reply('do it yourself (i broke)')
+  }
 
-  //   puppeteer
-  //   .launch()
-  //   .then(function(browser) {
-  //     return browser.newPage();
-  //   })
-  //   .then(function(page) {
-  //     return page.goto(url).then(function() {
-  //       return page.content();
-  //     });
-  //   })
-  //   .then(function(html) {
-  //     const content = $('ul > li', html)
-  //     const totalVal = $('ul > li', html).length
-  //     currentNumber = totalVal
-  //     console.log('found', currentNumber)
-  //     console.log(content[0].children)
-  //   })
-  //   .catch(function(err) {
-  //     //handle error
-  //   });
-  // }
+  try {
+    checkMentions(msg, client)
+  } catch (e) {
+    console.log(e)
+    msg.reply('i think you\'re talking to me but i\'m too stupid to understand')
+  }
+
+  try {
+    checkAlwaysSend(msg, client)
+  } catch (e) {
+    console.log(e)
+    msg.reply('code said \'always send this\' but i didnt LOL')
+  }
+
+  try {
+    checkRandomised(msg, client)
+  } catch (e) {
+    console.log(e)
+    msg.reply('idgi lol')
+  }
 })
 
 client.login(token)
